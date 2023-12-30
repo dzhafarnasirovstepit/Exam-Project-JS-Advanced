@@ -30,7 +30,7 @@ class Tasks {
 
     get id() {
         return this.#id;
-    };
+    }
 
     get name() {
         return this.#name;
@@ -49,3 +49,16 @@ class Tasks {
     }
 
 };
+
+class TasksList {
+
+    #allTasksList;
+
+    constructor(allTasksList) {
+        this.#allTasksList = allTasksList;
+    }
+
+    get allTasksList() {
+        return this.allTasksList;
+    }
+}
