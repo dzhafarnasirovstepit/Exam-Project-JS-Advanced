@@ -7,6 +7,7 @@ class Tasks {
     #status;
 
     constructor(name, description, creationDate, isCompleted = false) {
+
         this.#id = 'id' + Math.random().toString(16).slice(2);
         this.#name = name;
         this.#description = description;
@@ -59,6 +60,72 @@ class TasksList {
     }
 
     get allTasksList() {
-        return this.allTasksList;
+        return this.#allTasksList;
     }
 }
+
+// checkbox for tasks
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const taskList = document.getElementById('taskList');
+    const newTaskInput = document.getElementById('newTaskInput');
+    const addTaskBtn = document.getElementById('addTaskBtn');
+  
+    addTaskBtn.addEventListener('click', function () {
+
+      const newTaskText = newTaskInput.value.trim();
+
+      if (newTaskText !== '') {
+
+        const listItem = document.createElement('li');
+
+        listItem.innerHTML = `
+          <input type="checkbox" class="task-checkbox">
+          <label>${newTaskText}</label>
+          <button class="edit-btn">Редактировать</button>
+          <button class="delete-btn">Удалить</button>
+        `;
+
+        taskList.appendChild(listItem);
+  
+        newTaskInput.value = '';
+  
+        const checkbox = listItem.querySelector('.task-checkbox');
+
+        checkbox.addEventListener('change', function () {
+
+          if (checkbox.checked) {
+            listItem.classList.add('completed');
+
+          } else {
+            listItem.classList.remove('completed');
+          }
+
+        });
+  
+        const editBtn = listItem.querySelector('.edit-btn');
+
+        editBtn.addEventListener('click', function () {
+
+          const updatedText = prompt('Enter new text of the task:', newTaskText);
+
+          if (updatedText !== null) {
+            listItem.querySelector('label').innerText = updatedText;
+          }
+        });
+  
+        const deleteBtn = listItem.querySelector('.delete-btn');
+        deleteBtn.addEventListener('click', function () {
+          listItem.remove();
+        });
+  
+        listItem.addEventListener('click', function () {
+          alert('Changing the name of the task to: ' + newTaskText);
+        });
+
+      }
+
+    });
+    
+  });
