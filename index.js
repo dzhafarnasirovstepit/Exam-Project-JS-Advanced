@@ -129,3 +129,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     
   });
+
+// regular expressions
+
+const titleRegex = /^(?!\d+$)[EeRrNn]{1,16}( [EeRrNn]{1,16}){1,}$/;
+
+const isValidTitle = titleRegex.test("Title of the task");
+console.log(isValidTitle); 
+
+const descriptionRegex = /^(?!\s)[EeRrNn\s]{1,}$/;
+
+const isValidDescription = descriptionRegex.test("Detailed describtion");
+console.log(isValidDescription);
