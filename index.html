@@ -5,18 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="index.css" rel="stylesheet">
-    <script defer src="index.js"></script>
-    <title>Document</title>
+    <script src="index.js" type="module" defer></script>
+    <title>Main Page</title>
 </head>
 
 <body>
 
-    <ul id="taskList">
+    <div id="sort and filter">
+
+        <div class="sort container">
+            <label for="sort">Sort by:</label>
+            <select name="sort" id="sort-by">
+                <option value="date">Date</option>
+                <option value="name">Name</option>
+            </select>
+        </div>
+
+        <button class="filter done">Done</button>
+        <button class="filter undone">Undone</button>
+        <button class="filter all">All</button>
+
+    </div>
+
+    <ul id="tasks list">
+    </ul>
+
+    <form id="task form">
         
-      </ul>
-      
-      <input type="text" id="newTaskInput" placeholder="Enter new task">
-      <button id="addTaskBtn">Add task</button>
+        <p id="error" class="hidden error"></p>
+        <label for="input task name">Task name:</label>
+        <input type="text" id="task name" name="task name" placeholder="Enter name...">
+
+        <label for="input task description">Task description:</label>
+        <input type="text" id="task description" name="task description" placeholder="Description...">
+
+        <button type="submit">Add task</button>
+    </form>
 
 </body>
 

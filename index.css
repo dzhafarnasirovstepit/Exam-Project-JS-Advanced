@@ -1,0 +1,11 @@
+h1, a, form, li {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+h1 {
+    margin: 5%;
+}
