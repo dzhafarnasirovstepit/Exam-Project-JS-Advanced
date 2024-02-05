@@ -1,4 +1,6 @@
-class TasksList {
+import Task from "./tasks.js";
+
+export default class TasksList {
     
     #tasks;
     #filteredTasks;
