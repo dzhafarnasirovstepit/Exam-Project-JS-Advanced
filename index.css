@@ -1,4 +1,4 @@
-h1, a, form, li {
+/* h1, a, form, li {
     font-family: Arial, sans-serif;
     display: flex;
     align-items: center;
@@ -8,4 +8,16 @@ h1, a, form, li {
 
 h1 {
     margin: 5%;
+}
+ */
+
+body {
+    background-color:navy;
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
 }

@@ -2,8 +2,8 @@ import Task from "../scripts/tasks.js";
 import TasksList from "../scripts/list.js";
 import { regexDescription, regexName } from "../scripts/reg.js";
 
-const homeButton = document.querySelector('.home button');
-const form = document.querySelector('#add task form');
+const homeButton = document.querySelector('.home-button');
+const form = document.querySelector('#add-task-form');
 let paramString = location.href.split('?')[1];
 let queryString = new URLSearchParams(paramString);
 const id = queryString.get('id');
@@ -17,9 +17,13 @@ if (localStorage.getItem('tasksList') !== null) {
     }
 }
 
-let inputTaskName = document.querySelector('#task name input');
-let inputTaskDescription = document.querySelector('#task description input');
+let inputTaskName = document.querySelector('#task-name-input');
+let inputTaskDescription = document.querySelector('#task-description-input');
 const task = tasksList.findTask(id);
+
+if(task === undefined) {
+    location.href="/error404/error404.html";
+}
 
 inputTaskName.value=task.name;
 inputTaskDescription.value=task.description;
@@ -30,8 +34,8 @@ homeButton.addEventListener('click', (e) => {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    inputTaskName = document.querySelector('#task name input');
-    inputTaskDescription = document.querySelector('#task description input');
+    inputTaskName = document.querySelector('#task-name-input');
+    inputTaskDescription = document.querySelector('#task-description-input');
     const pError=document.querySelector('#error');
     const isNameValid=regexName.test(inputTaskName.value);
     const isDescriptionValid=regexDescription.test(inputTaskDescription.value)&&inputTaskName.value!==inputTaskDescription.value.trim();

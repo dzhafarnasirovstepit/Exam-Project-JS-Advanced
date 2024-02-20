@@ -1,10 +1,8 @@
 import Task from "./scripts/tasks.js";
 import TasksList from './scripts/list.js';
-import {regexDescription,regexName} from './scripts/reg.js';
+import {regexDescription, regexName} from './scripts/reg.js';
 
 'use strict';
-
-console.clear();
 
 function updateAll(){
     tasksList.updateList();
@@ -56,9 +54,9 @@ function filter(tasksList,type){
 const form = document.querySelector('#add-task-form');
 let deleteButtons = document.querySelectorAll('.delete-button');
 const select=document.querySelector('#sort-by');
-const doneFilterButton=document.querySelector('.filter done');
-const undoneFilterButton=document.querySelector('.filter undone');
-const allFilterButton=document.querySelector('.filter all');
+const doneFilterButton=document.querySelector('.filter-done');
+const undoneFilterButton=document.querySelector('.filter-undone');
+const allFilterButton=document.querySelector('.filter-all');
 let statusCheckboxes = document.querySelectorAll('.status-checkbox');
 let editButtons = document.querySelectorAll('.edit-button');
 
@@ -75,22 +73,25 @@ if(localStorage.getItem('tasksList') !== null){
 
 
 form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const inputTaskName = document.querySelector('#task name');
-    const inputTaskDescription = document.querySelector('#task description');
+
+    const inputTaskName = document.querySelector('#task-name');
+    const inputTaskDescription = document.querySelector('#task-description');
     const pError=document.querySelector('#error');
     const isNameValid=regexName.test(inputTaskName.value);
     const isDescriptionValid=regexDescription.test(inputTaskDescription.value)&&inputTaskName.value!==inputTaskDescription.value.trim();
     
     pError.textContent=isNameValid?"":"invalid name!";
-    pError.className=isNameValid?'hidden error':'visible-error';
+    pError.className=isNameValid?'hidden-error':'visible-error';
+    
     if(!isNameValid){
+        console.log(1);
         return;
     }
 
     pError.textContent=isDescriptionValid?"":"invalid description!";
-    pError.className=isDescriptionValid?'hidden error':'visible-error';
+    pError.className=isDescriptionValid?'hidden-error':'visible-error';
     if(!isDescriptionValid){
+        console.log(1);
         return;
     }
 
