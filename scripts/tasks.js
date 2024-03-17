@@ -87,3 +87,5 @@ export default class Task {
         return newTask;
     }
 }
+
+Task.fromJSON // позволяет вызвать fromJSON для Task, не создавая экземпляр класса Task

@@ -23,7 +23,7 @@ if(task === undefined) {
 }
 
 homeButton.addEventListener('click', (e) => {
-    location.href = '/index.html';
+    location.href = '/*/index.html';
 });
 
 const div=document.createElement('div');
